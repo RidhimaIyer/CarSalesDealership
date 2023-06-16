@@ -1,0 +1,2015 @@
+openapi: "3.0.0"
+servers:
+  - description:  Test
+    url: /
+info:
+  description: This is a simple API
+  version: "1.0.0"
+  title: Test API
+paths:
+  /car:
+    post:
+      tags:
+        - Car
+      summary: Add a new car
+      operationId: app.views.carView.add_car
+      description: |
+        Add a new car
+      requestBody:
+        description: Creates a new Car 
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Car'
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          description: Bad request 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+    get:
+      tags:
+        - Car
+      summary: List all cars 
+      operationId: app.views.carView.get_car
+      description: |
+        List all cars
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAllCarResponse'
+        '400':
+          description: Bad request 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+
+  /car/{car_serial_no}:
+    get:
+      tags:
+        - Car
+      summary: Find Car by car_serial_no 
+      operationId: app.views.carView.get_car_serial_no
+      description: |
+        Returns a single car 
+      parameters:
+        - name: car_serial_no
+          in: path 
+          description: Car serial Number 
+          required: true 
+          schema:
+            type: string 
+            example: C-1
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetCarResponse'
+        '400':
+          description: Bad request 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+    patch:
+      tags:
+        - Car
+      summary: Update/Patch Car by car_serial_no 
+      operationId: app.views.carView.update_car_record
+      description: |
+        Updates a single car 
+      parameters:
+        - name: car_serial_no
+          in: path 
+          description: Car serial Number to update
+          required: true 
+          schema:
+            type: string 
+            example: C-1
+      requestBody:
+        description: Updates a car record
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CarPatch'
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          description: Bad request 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+
+    delete:
+      tags:
+        - Car
+      summary: Deletes Car by car_serial_no 
+      operationId: app.views.carView.delete_car
+      description: |
+        Deletes a single car 
+      parameters:
+        - name: car_serial_no
+          in: path 
+          description: Car serial Number to delete
+          required: true 
+          schema:
+            type: string 
+            example: C-1
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          description: Bad request 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+
+  /customer:
+    post:
+      tags:
+        - Customer
+      summary: Add a new Customer
+      operationId: app.views.customerView.add_customer
+      description: |
+        Add a new customer
+      requestBody:
+        description: Creates a new Customer 
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          description: Bad request 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+    get:
+      tags:
+        - Customer
+      summary: List all customers 
+      operationId: app.views.customerView.get_customer
+      description: |
+        List all customers
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAllCustomerResponse'
+        '400':
+          description: Bad request 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        
+  /customer/{customer_id}:
+    get:
+      tags:
+        - Customer
+      summary: Find Customer by customer_id 
+      operationId: app.views.customerView.get_customer_by_id
+      description: |
+        Returns a single customer 
+      parameters:
+        - name: customer_id
+          in: path 
+          description: Customer ID
+          required: true 
+          schema:
+            type: integer 
+            example: 1
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetCustomerResponse'
+        '400':
+          description: Bad request 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+    patch:
+      tags:
+        - Customer
+      summary: Update/Patch Customer by customer ID 
+      operationId: app.views.customerView.update_customer
+      description: |
+        Updates a single customer 
+      parameters:
+        - name: customer_id
+          in: path 
+          description: Customer ID to update
+          required: true 
+          schema:
+            type: string 
+            example: 1
+      requestBody:
+        description: Updates a customer record
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerPatch'
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          description: Bad request 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+
+    delete:
+      tags:
+        - Customer
+      summary: Deletes Customer by customer ID 
+      operationId: app.views.customerView.delete_customer
+      description: |
+        Deletes a single customer 
+      parameters:
+        - name: customer_id
+          in: path 
+          description: Customer ID to delete
+          required: true 
+          schema:
+            type: string 
+            example: 1
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          description: Bad request 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+
+  /dealer_inventory:
+    post:
+      tags:
+        - Dealer_Inventory
+      summary: Add a new Car inventory record for dealer 
+      operationId: app.views.dealerInventoryView.add_dealer_inventory
+      description: |
+        Dealer Inventory is the associative mapping between a dealer and Car. It lists the number of cars present in inventory for that dealer. 
+        Adds a new Car Inventory record for dealer 
+      requestBody:
+        description: Creates a new car inventory record for dealer  
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DealerInventory'
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          description: Bad request 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+    get:
+      tags:
+        - Dealer_Inventory
+      summary: List all inventory records for all dealers  
+      operationId: app.views.dealerInventoryView.get_dealer_inventory
+      description: |
+        List all inventory records for all dealers  
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAllDealerInventoryResponse'
+        '400':
+          description: Bad request 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+
+  /dealer_inventory/{dealer_id}:
+    get:
+      tags:
+        - Dealer_Inventory
+      summary: List all cars and their respective counts for a particular Dealer ID 
+      operationId: app.views.dealerInventoryView.get_dealer_inventory_by_dealer_id
+      description: |
+        List all cars and their respective counts for a particular Dealer ID 
+      parameters:
+        - name: dealer_id
+          in: path 
+          description: Dealer ID
+          required: true 
+          schema:
+            type: integer 
+            example: 1
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAllDealerInventoryResponse'
+        '400':
+          description: Bad request 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+  
+  /dealer_inventory/{dealer_id}/{car_serial_no}:
+    get:
+      tags:
+        - Dealer_Inventory
+      summary: List Car Count in inventory for a particular dealer and car serial number combination
+      operationId: app.views.dealerInventoryView.get_dealer_inventory_by_dealer_car
+      description: |
+        List Car Count in inventory for a particular dealer and car serial number combination
+      parameters:
+        - name: dealer_id
+          in: path 
+          description: Dealer ID
+          required: true 
+          schema:
+            type: integer 
+            example: 1
+        - name: car_serial_no
+          in: path 
+          description: Car Serial Number
+          required: true 
+          schema:
+            type: string 
+            example: 'C-1'
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetDealerInventoryResponse'
+        '400':
+          description: Bad request 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+
+
+    patch:
+      tags:
+        - Dealer_Inventory
+      summary: Update/Patch Dealer Inventory by dealer id and car serial number 
+      operationId: app.views.dealerInventoryView.update_dealer_inventory
+      description: |
+        Updates a single record based on dealer_id and car_serial_no 
+      parameters:
+        - name: dealer_id
+          in: path 
+          description: Dealer ID
+          required: true 
+          schema:
+            type: integer 
+            example: 1
+        - name: car_serial_no
+          in: path 
+          description: Car Serial Number
+          required: true 
+          schema:
+            type: string 
+            example: 'C-1'
+      requestBody:
+        description: Updates a dealer inventory record
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DealerInventoryPatch'
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          description: Bad request 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+
+    delete:
+      tags:
+        - Dealer_Inventory
+      summary: Deletes Dealer Inventory by dealer id and car serial number 
+      operationId: app.views.dealerInventoryView.delete_inventory
+      description: |
+        Deletes a single dealer inventory record 
+      parameters:
+        - name: dealer_id
+          in: path 
+          description: Dealer ID
+          required: true 
+          schema:
+            type: integer 
+            example: 1
+        - name: car_serial_no
+          in: path 
+          description: Car Serial Number
+          required: true 
+          schema:
+            type: string 
+            example: 'C-1'
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          description: Bad request 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+
+  /dealer:
+    post:
+      tags:
+        - Dealer
+      summary: Add a new Dealer
+      operationId: app.views.dealerView.add_dealer
+      description: |
+        Add a new Dealer
+      requestBody:
+        description: Creates a new dealer 
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Dealer'
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          description: Bad request 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+    get:
+      tags:
+        - Dealer
+      summary: List all dealers
+      operationId: app.views.dealerView.get_dealer
+      description: |
+        List all dealers
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAllDealerResponse'
+        '400':
+          description: Bad request 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+
+  /dealer/{dealer_id}:
+    get:
+      tags:
+        - Dealer
+      summary: Get dealer by dealer_id 
+      operationId: app.views.dealerView.get_dealer_by_id
+      description: |
+        Get dealer by dealer_id 
+      parameters:
+        - name: dealer_id
+          in: path 
+          description: Dealer ID
+          required: true 
+          schema:
+            type: integer 
+            example: 1
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetDealerResponse'
+        '400':
+          description: Bad request 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+  
+    patch:
+      tags:
+        - Dealer
+      summary: Update/Patch Dealer by dealer id
+      operationId: app.views.dealerView.update_dealer
+      description: |
+        Updates a single record based on dealer_id 
+      parameters:
+        - name: dealer_id
+          in: path 
+          description: Dealer ID
+          required: true 
+          schema:
+            type: integer 
+            example: 1
+      requestBody:
+        description: Updates a dealer inventory record
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DealerPatch'
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          description: Bad request 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+
+    delete:
+      tags:
+        - Dealer
+      summary: Deletes Dealer by dealer id
+      operationId: app.views.dealerView.delete_dealer
+      description: |
+        Deletes a single dealer  record 
+      parameters:
+        - name: dealer_id
+          in: path 
+          description: Dealer ID
+          required: true 
+          schema:
+            type: integer 
+            example: 1
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          description: Bad request 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+  
+  /dealer/state/{state}:
+    get:
+      tags:
+        - Dealer
+      summary: Get all dealers by state
+      operationId: app.views.dealerView.get_dealer_state
+      description: |
+        Get all dealers by state
+      parameters:
+        - name: state
+          in: path 
+          description: State to filter by 
+          required: true 
+          schema:
+            type: string 
+            example: california
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAllDealerResponse'
+        '400':
+          description: Bad request 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+
+  /employee:
+    post:
+      tags:
+        - Employee
+      summary: Add a new Employee
+      operationId: app.views.employeeView.add_employee
+      description: |
+        Add a new Employee
+      requestBody:
+        description: Creates a new Employee 
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Employee'
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          description: Bad request 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+    get:
+      tags:
+        - Employee
+      summary: List all employees
+      operationId: app.views.employeeView.get_employee
+      description: |
+        List all employees
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAllEmployeeResponse'
+        '400':
+          description: Bad request 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+
+  /employee/{employee_id}:
+    get:
+      tags:
+        - Employee
+      summary: Get employee by employee_id
+      operationId: app.views.employeeView.get_employee_by_id
+      description: |
+        Get employee by employee_id
+      parameters:
+        - name: employee_id
+          in: path 
+          description: Employee ID
+          required: true 
+          schema:
+            type: integer 
+            example: 1
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetEmployeeResponse'
+        '400':
+          description: Bad request 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+  
+    patch:
+      tags:
+        - Employee
+      summary: Update/Patch Employee by employee id
+      operationId: app.views.employeeView.update_employee
+      description: |
+        Updates a single record based on employee_id 
+      parameters:
+        - name: employee_id
+          in: path 
+          description: Employee ID
+          required: true 
+          schema:
+            type: integer 
+            example: 1
+      requestBody:
+        description: Updates a employee record
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmployeePatch'
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          description: Bad request 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+
+    delete:
+      tags:
+        - Employee
+      summary: Deletes Employee by Employee ID
+      operationId: app.views.employeeView.delete_employee
+      description: |
+        Deletes a single employee  record 
+      parameters:
+        - name: employee_id
+          in: path 
+          description: Employee ID
+          required: true 
+          schema:
+            type: integer 
+            example: 1
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          description: Bad request 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+  
+  /employee/dealer/{dealer_id}:
+    get:
+      tags:
+        - Employee
+      summary: Get all employees by dealer id
+      operationId: app.views.employeeView.get_employee_by_dealer
+      description: |
+        Get all employees working in a dealership
+      parameters:
+        - name: dealer_id
+          in: path 
+          description: Dealer ID
+          required: true 
+          schema:
+            type: integer 
+            example: 1
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAllEmployeeResponse'
+        '400':
+          description: Bad request 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+
+  /sale:
+    post:
+      tags:
+        - Sale
+      summary: Add a new Sale
+      operationId: app.views.saleView.add_invoice
+      description: |
+        Add a new Invoice
+      requestBody:
+        description: Creates a new Sale 
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Sale'
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          description: Bad request 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+  
+  /sale/{dealer_id}:
+    get:
+      tags:
+        - Sale
+      summary: List all sales in a dealer for a given date range 
+      operationId: app.views.saleView.get_sale_by_date
+      description: |
+        List all sales in a dealer for a given date range 
+      parameters:
+        - name: dealer_id
+          in: path 
+          description: Dealer ID
+          required: true 
+          schema:
+            type: integer 
+            example: 1
+        - name: start_dt 
+          in: query 
+          description: start date for date filter 
+          required: false 
+          schema:
+            type: string 
+            example: "2023-06-13"
+        - name: end_dt 
+          in: query
+          description: end date for date filter 
+          required: false 
+          schema:
+            type: string 
+            example: "2023-06-13" 
+
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAllSaleResponse'
+        '400':
+          description: Bad request 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+
+
+  /sale/{dealer_id}/{customer_id}:
+    get:
+      tags:
+        - Sale
+      summary: List all sales in a dealer for a customer in a given date range 
+      operationId: app.views.saleView.get_invoice_by_cust_date
+      description: |
+        List all sales in a dealer for a customer in a given date range 
+      parameters:
+        - name: dealer_id
+          in: path 
+          description: Dealer ID
+          required: true 
+          schema:
+            type: integer 
+            example: 1
+        - name: customer_id
+          in: path 
+          description: Customer ID
+          required: true 
+          schema:
+            type: integer 
+            example: 1
+        - name: start_dt 
+          in: query 
+          description: start date for date filter 
+          required: false 
+          schema:
+            type: string 
+            example: "2023-06-13"
+        - name: end_dt 
+          in: query
+          description: end date for date filter 
+          required: false 
+          schema:
+            type: string 
+            example: "2023-06-13" 
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAllSaleResponse'
+        '400':
+          description: Bad request 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+
+
+  /sale/{invoice_id}:
+    patch:
+      tags:
+        - Sale
+      summary: Update/Patch Sale by invoice id 
+      operationId: app.views.saleView.update_sale_record
+      description: |
+        Updates a single record based on invoice_id 
+      parameters:
+        - name: invoice_id
+          in: path 
+          description: Invoice ID
+          required: true 
+          schema:
+            type: integer 
+            example: 1
+      requestBody:
+        description: Updates a sale record
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SalePatch'
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          description: Bad request 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+
+    delete:
+      tags:
+        - Sale
+      summary: Deletes Sale by invoice id
+      operationId: app.views.saleView.delete_sale_record
+      description: |
+        Deletes a single sale  record 
+      parameters:
+        - name: invoice_id
+          in: path 
+          description: Invoice ID
+          required: true 
+          schema:
+            type: integer 
+            example: 1
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          description: Bad request 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+  
+
+  /sale_item:
+    post:
+      tags:
+        - Sale_Item
+      summary: Add a new Sale Line Item
+      operationId: app.views.saleLineItemView.add_sale_line_item
+      description: |
+        Add a new Invoice Line Item with cart details 
+      requestBody:
+        description: Creates a new Sale Line Item  
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SaleLineItem'
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          description: Bad request 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+  
+  /sale_item/{invoice_id}:
+    get:
+      tags:
+        - Sale_Item
+      summary: List all sales line items for a given invoice 
+      operationId: app.views.saleLineItemView.get_sale_item
+      description: |
+        List all sale line items for a given invoice id 
+      parameters:
+        - name: invoice_id
+          in: path 
+          description: Invoice ID
+          required: true 
+          schema:
+            type: integer 
+            example: 1
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAllSaleLineItemResponse'
+        '400':
+          description: Bad request 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+
+  /sale_item/{invoice_line_item_id}:
+    patch:
+      tags:
+        - Sale_Item
+      summary: Update/Patch Sale line item  by invoice_line_item_id  
+      operationId: app.views.saleLineItemView.update_sale_item
+      description: |
+        Update/Patch Sale line item  by invoice_line_item_id  
+      parameters:
+        - name: invoice_line_item_id
+          in: path 
+          description: invoice_line_item_id
+          required: true 
+          schema:
+            type: integer 
+            example: 1
+      requestBody:
+        description: Updates a sale line item record
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SaleLineItemPatch'
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          description: Bad request 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+
+    delete:
+      tags:
+        - Sale_Item
+      summary: Deletes Sale line item by invoice_line_item_id
+      operationId: app.views.saleLineItemView.delete_sale_item
+      description: |
+        Deletes a single sale  record 
+      parameters:
+        - name: invoice_line_item_id
+          in: path 
+          description: invoice_line_item_id
+          required: true 
+          schema:
+            type: integer 
+            example: 1
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          description: Bad request 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+  
+
+
+  /state_tax:
+    post:
+      tags:
+        - State_Tax
+      summary: Add new tax information for state
+      operationId: app.views.stateTaxView.add_state_tax
+      description: |
+        Add new tax information for state
+      requestBody:
+        description: Add new tax information for state
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StateTax'
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          description: Bad request 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+    get:
+      tags:
+        - State_Tax
+      summary: List tax information for all states
+      operationId: app.views.stateTaxView.get_all_state_tax
+      description: |
+        List tax information for all states
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAllStateTaxResponse'
+        '400':
+          description: Bad request 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+
+  /state_tax/{state_tax_id}:
+    get:
+      tags:
+        - State_Tax
+      summary: Get tax information by state_tax_id
+      operationId: app.views.stateTaxView.get_state_by_id
+      description: |
+        Get tax information by state_tax_id
+      parameters:
+        - name: state_tax_id
+          in: path 
+          description: state_tax_id
+          required: true 
+          schema:
+            type: integer 
+            example: 1
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetStateTaxResponse'
+        '400':
+          description: Bad request 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        
+    patch:
+      tags:
+        - State_Tax
+      summary: Update/Patch State Tax  by state_tax_id
+      operationId: app.views.stateTaxView.update_state_tax
+      description: |
+        Update/Patch Sale line item  by state_tax_id
+      parameters:
+        - name: state_tax_id
+          in: path 
+          description: state_tax_id
+          required: true 
+          schema:
+            type: integer 
+            example: 1
+      requestBody:
+        description: Update/Patch State Tax  by state_tax_id
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StateTaxPatch'
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          description: Bad request 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+
+    delete:
+      tags:
+        - State_Tax
+      summary: Deletes state tax by state_tax_id
+      operationId: app.views.stateTaxView.delete_state_tax
+      description: |
+        Deletes a single state tax  record 
+      parameters:
+        - name: state_tax_id
+          in: path 
+          description: state_tax_id
+          required: true 
+          schema:
+            type: integer 
+            example: 1
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          description: Bad request 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+    
+
+  /state_tax/state/{state}:
+    get:
+      tags:
+        - State_Tax
+      summary: List all State_Tax items for a given state 
+      operationId: app.views.stateTaxView.get_state_tax
+      description: |
+        List all State_Tax items for a given state 
+      parameters:
+        - name: state
+          in: path 
+          description: state
+          required: true 
+          schema:
+            type: string 
+            example: california
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetStateTaxResponse'
+        '400':
+          description: Bad request 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+    
+  
+
+components:
+  schemas:
+    Car:
+      required: 
+        - car_serial_no
+        - price 
+      type: object
+      properties:
+        car_serial_no:
+          type: string
+          example: C-1
+        make:
+          type: string 
+          example: Honda
+        model:
+          type: string 
+          example: CBR1000
+        year:
+          type: string
+          example: 2020-04-04
+        color:
+          type: string 
+          example: blue 
+        price:
+          type: number
+          example: 1050000.0
+    CarPatch:
+      type: object
+      properties:
+        make:
+          type: string 
+          example: Honda
+        model:
+          type: string 
+          example: CBR1000
+        year:
+          type: string
+          example: 2020-04-04
+        color:
+          type: string 
+          example: blue 
+        price:
+          type: number
+          example: 1050000.0
+    GetAllCarResponse:
+      type: object 
+      properties:
+        msg:
+          type: array
+          items:
+            $ref: '#/components/schemas/CarObject'
+        status:
+          type: string 
+    GetCarResponse:
+      type: object 
+      properties:
+        msg:
+          $ref: '#/components/schemas/CarObject'
+        status:
+          type: string 
+          example: success
+    CarObject:
+      type: object
+      properties:
+        car_id:
+          type: integer
+          example: 1
+        car_serial_no: 
+          type: string 
+          example: C-1
+        color:
+          type: string 
+          example: blue 
+        created_at:
+          type: string 
+          example: Mon, 12 Jun 2022 08:36:01 GMT
+        make:
+          type: string 
+          example: Honda
+        model:
+          type: string 
+          example: CBR1000
+        modified_at:
+          type: string 
+          example: Mon, 12 Jun 2022 08:36:01 GMT
+        price: 
+          type: number
+          example: 1050000.0
+        year:
+          type: string 
+          example: 2020-04-04
+    
+    Customer:
+      required: 
+        - phone
+        - email_id
+        - ssn
+        - first_name
+        - last_name
+        - address 
+      type: object
+      properties:
+        phone:
+          type: string
+          example: '9999999997'
+        email_id:
+          type: string 
+          example: cust_1@example.com
+        ssn:
+          type: string 
+          example: '1234'
+        first_name:
+          type: string
+          example: John
+        last_name:
+          type: string 
+          example: Doe 
+        address:
+          type: string
+          example: Abc Apartments, CA-94301
+    GetAllCustomerResponse:
+      type: object 
+      properties:
+        msg:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerObject'
+        status:
+          type: string 
+    CustomerObject:
+      type: object
+      properties:
+        address:
+          type: string
+          example: Abc Apartments, CA-94301
+        customer_id:
+          type: integer
+          example: 1
+        email_id:
+          type: string 
+          example: cust_1@example.com
+        first_name:
+          type: string
+          example: John
+        last_name:
+          type: string 
+          example: Doe 
+        phone:
+          type: string
+          example: '9999999997'
+        ssn:
+          type: string 
+          example: '1234'
+        created_at:
+          type: string 
+          example: Mon, 12 Jun 2022 08:36:01 GMT  
+        modified_at:
+          type: string 
+          example: Mon, 12 Jun 2022 08:36:01 GMT
+    GetCustomerResponse:
+      type: object 
+      properties:
+        msg:
+          $ref: '#/components/schemas/CustomerObject'
+        status:
+          type: string 
+          example: success
+    CustomerPatch:
+      type: object
+      properties:
+        address:
+          type: string
+          example: Abc Apartments, CA-94301
+        email_id:
+          type: string 
+          example: cust_1@example.com
+        first_name:
+          type: string
+          example: John
+        last_name:
+          type: string 
+          example: Doe 
+        phone:
+          type: string
+          example: '9999999997'
+        ssn:
+          type: string 
+          example: '1234' 
+
+    DealerInventory:
+      required: 
+        - car_serial_no
+        - dealer_id
+        - car_count 
+      type: object
+      properties:
+        car_serial_no:
+          type: string
+          example: C-1
+        dealer_id:
+          type: string 
+          example: 1
+        car_count:
+          type: integer 
+          example: 100
+
+    GetAllDealerInventoryResponse:
+      type: object 
+      properties:
+        msg:
+          type: array
+          items:
+            $ref: '#/components/schemas/DealerInventoryObject'
+        status:
+          type: string 
+      
+    DealerInventoryObject:
+      type: object
+      properties:
+        dealer_inventory_id:
+          type: string
+          example: 1
+        car_serial_no:
+          type: string
+          example: C-1
+        dealer_id:
+          type: string 
+          example: 1
+        car_count:
+          type: integer 
+          example: 100
+        created_at:
+          type: string 
+          example: Mon, 12 Jun 2022 08:36:01 GMT  
+        modified_at:
+          type: string 
+          example: Mon, 12 Jun 2022 08:36:01 GMT
+    
+    GetDealerInventoryResponse:
+      type: object 
+      properties:
+        msg:
+          $ref: '#/components/schemas/DealerInventoryObject'
+        status:
+          type: string 
+          example: success
+
+    DealerInventoryPatch:
+      type: object
+      properties:
+        car_count:
+          type: integer 
+          example: 100
+
+
+    Dealer:
+      required: 
+        - name
+        - web_url
+        - street_address 
+        - postal_code
+        - city
+        - state
+      type: object
+      properties:
+        name:
+          type: string
+          example: Cartec Honda
+        web_url:
+          type: string 
+          example: "cartechonda@example.com"
+        street_address:
+          type: string 
+          example: Abc Street, CA-94301
+        postal_code:
+          type: string 
+          example: 94301
+        city:
+          type: string 
+          example: Palo Alto
+        state:
+          type: string 
+          example: california
+
+
+    GetAllDealerResponse:
+      type: object 
+      properties:
+        msg:
+          type: array
+          items:
+            $ref: '#/components/schemas/DealerObject'
+        status:
+          type: string 
+
+    DealerObject:
+      type: object
+      properties:
+        dealer_id:
+          type: integer
+          example: 1 
+        name:
+          type: string
+          example: Cartec Honda
+        web_url:
+          type: string 
+          example: "cartechonda@example.com"
+        street_address:
+          type: string 
+          example: Abc Street, CA-94301
+        postal_code:
+          type: string 
+          example: 94301
+        city:
+          type: string 
+          example: Palo Alto
+        state:
+          type: string 
+          example: california
+        created_at:
+          type: string 
+          example: Mon, 12 Jun 2022 08:36:01 GMT  
+        modified_at:
+          type: string 
+          example: Mon, 12 Jun 2022 08:36:01 GMT
+
+    GetDealerResponse:
+      type: object 
+      properties:
+        msg:
+          $ref: '#/components/schemas/DealerObject'
+        status:
+          type: string 
+          example: success
+    
+    DealerPatch:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Cartec Honda
+        web_url:
+          type: string 
+          example: "cartechonda@example.com"
+        street_address:
+          type: string 
+          example: Abc Street, CA-94301
+        postal_code:
+          type: string 
+          example: 94301
+        city:
+          type: string 
+          example: Palo Alto
+        state:
+          type: string 
+          example: california
+
+    Employee:
+      required: 
+        - first_name
+        - last_name
+        - dealer_id 
+      type: object
+      properties:
+        first_name:
+          type: string
+          example: John
+        last_name:
+          type: string 
+          example: Doe
+        dealer_id:
+          type: integer 
+          example: 1
+
+    GetAllEmployeeResponse:
+      type: object 
+      properties:
+        msg:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmployeeObject'
+        status:
+          type: string 
+
+    EmployeeObject:
+      type: object
+      properties:
+        first_name:
+          type: string
+          example: John
+        last_name:
+          type: string 
+          example: Doe
+        dealer_id:
+          type: integer 
+          example: 1
+        employee_id:
+          type: integer
+          example: 1 
+        created_at:
+          type: string 
+          example: Mon, 12 Jun 2022 08:36:01 GMT  
+        modified_at:
+          type: string 
+          example: Mon, 12 Jun 2022 08:36:01 GMT
+
+    GetEmployeeResponse:
+      type: object 
+      properties:
+        msg:
+          $ref: '#/components/schemas/EmployeeObject'
+        status:
+          type: string 
+          example: success
+    
+    EmployeePatch:
+      type: object
+      properties:
+        first_name:
+          type: string
+          example: John
+        last_name:
+          type: string 
+          example: Doe
+        dealer_id:
+          type: integer 
+          example: 1
+
+    Sale:
+      required: 
+        - date_of_purchase
+        - dealer_id
+        - customer_id
+        - employee_id 
+      type: object
+      properties:
+        date_of_purchase:
+          type: string
+          example: "2023-06-13"
+        customer_id:
+          type: integer 
+          example: 1
+        dealer_id:
+          type: integer 
+          example: 1
+        employee_id:
+          type: integer
+          example: 1 
+
+    GetAllSaleResponse:
+      type: object 
+      properties:
+        msg:
+          type: array
+          items:
+            $ref: '#/components/schemas/SaleObject'
+        status:
+          type: string 
+
+    SaleObject:
+      type: object
+      properties:
+        date_of_purchase:
+          type: string
+          example: "Tue, 13 Jun 2023 00:00:00 GMT"
+        customer_id:
+          type: integer 
+          example: 1
+        dealer_id:
+          type: integer 
+          example: 1
+        employee_id:
+          type: integer
+          example: 1 
+        invoice_id:
+          type: integer
+          example: 1 
+        net_price:
+          type: number 
+          example: 100.0
+        net_tax:
+          type: number 
+          example: 30.0
+        created_at:
+          type: string 
+          example: Mon, 12 Jun 2022 08:36:01 GMT  
+        modified_at:
+          type: string 
+          example: Mon, 12 Jun 2022 08:36:01 GMT
+
+    GetSaleResponse:
+      type: object 
+      properties:
+        msg:
+          $ref: '#/components/schemas/SaleObject'
+        status:
+          type: string 
+          example: success
+    
+    SalePatch:
+      type: object
+      properties:
+        date_of_purchase:
+          type: string
+          example: "2023-06-13"
+        customer_id:
+          type: integer 
+          example: 1
+        dealer_id:
+          type: integer 
+          example: 1
+        employee_id:
+          type: integer
+          example: 1 
+        net_price:
+          type: number 
+          example: 100.0
+        net_tax:
+          type: number 
+          example: 30.0
+
+    SaleLineItem:
+      required: 
+        - invoice_id
+        - dealer_id
+        - cart
+      type: object
+      properties:
+        invoice_id:
+          type: integer
+          example: 1
+        dealer_id:
+          type: integer 
+          example: 1
+        cart:
+          type: array
+          items:
+            $ref: '#/components/schemas/SaleLineCartObject'
+
+    SaleLineCartObject:
+      required:
+        - car_serial_no
+      type: object 
+      properties: 
+        car_serial_no:
+          type: string 
+          example: C-1
+        quantity:
+          type: integer
+          example: 2 
+        discount_percentage:
+          type: integer 
+          example: 10 
+          
+
+    GetAllSaleLineItemResponse:
+      type: object 
+      properties:
+        msg:
+          type: array
+          items:
+            $ref: '#/components/schemas/SaleLineItemObject'
+        status:
+          type: string 
+
+
+    SaleLineItemObject:
+      type: object 
+      properties:
+        car_serial_no:
+          type: string 
+          example: C-1
+        quantity:
+          type: integer
+          example: 2 
+        discount_percentage:
+          type: integer 
+          example: 10 
+        car_net_price:
+          type: number 
+          example: 151010.0
+        car_unit_price:
+          type: number 
+          example: 151010.0
+        invoice_id:
+          type: integer
+          example: 1 
+        invoice_line_item_id:
+          type: integer
+          example: 1 
+        item_tax:
+          type: number 
+          example: 10.0
+        created_at:
+          type: string 
+          example: Mon, 12 Jun 2022 08:36:01 GMT  
+        modified_at:
+          type: string 
+          example: Mon, 12 Jun 2022 08:36:01 GMT
+
+    SaleLineItemPatch:
+      type: object
+      properties:
+        car_serial_no:
+          type: string 
+          example: C-1
+        quantity:
+          type: integer
+          example: 2 
+        discount_percentage:
+          type: integer 
+          example: 10 
+        car_net_price:
+          type: number 
+          example: 151010.0
+        car_unit_price:
+          type: number 
+          example: 151010.0
+        invoice_id:
+          type: integer
+          example: 1 
+        item_tax:
+          type: number 
+          example: 10.0
+
+    StateTax:
+      type: object
+      properties:
+        state:
+          type: string 
+          example: california
+        tax: 
+          type: number 
+          example: 10 
+
+    
+
+    GetAllStateTaxResponse:
+      type: object 
+      properties:
+        msg:
+          type: array
+          items:
+            $ref: '#/components/schemas/StateTaxObject'
+        status:
+          type: string 
+
+    StateTaxObject:
+      type: object
+      properties:
+        state_tax_id:
+          type: integer
+          example: 1 
+        state:
+          type: string 
+          example: california
+        tax: 
+          type: number 
+          example: 10 
+        created_at:
+          type: string 
+          example: Mon, 12 Jun 2022 08:36:01 GMT  
+        modified_at:
+          type: string 
+          example: Mon, 12 Jun 2022 08:36:01 GMT
+
+    GetStateTaxResponse:
+      type: object 
+      properties:
+        msg:
+          $ref: '#/components/schemas/StateTaxObject'
+        status:
+          type: string 
+          example: success
+    
+    StateTaxPatch:
+      type: object
+      properties:
+        tax: 
+          type: number 
+          example: 10 
+
+
+
+
+    ApiResponse:
+        type: object
+        properties:
+          msg:
+            type: string
+          status:
+            type: string 
+    

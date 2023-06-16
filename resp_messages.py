@@ -1,0 +1,55 @@
+MISSING_FIELD = "Missing required positional argument in request body"
+CAR_SERIAL_EXISTS = "Car_serial_no Entry already exists"
+CAR_SERIAL_NOT_FOUND = "Car serial number does not exist"
+CAR_ADD_SUCCESS = "Car Entry Created"
+CAR_UPDATE_SUCCESS = "Car record updated"
+CAR_DELETE_SUCCESS = "Car record deleted"
+
+CUSTOMER_EMAIL_EXISTS = "Customer Email already exists"
+CUSTOMER_ADD_SUCCESS = "Customer Entry Created"
+CUSTOMER_ID_NOT_FOUND = "Customer ID not found"
+CUSTOMER_EMAIL_NOT_FOUND = "Customer Email not found"
+CUSTOMER_UPDATE_SUCCESS = "Customer record updated"
+CUSTOMER_DELETE_SUCCESS = "Customer record deleted"
+
+INVENTORY_CAR_DEALER_EXISTS = "Record with provided car_serial_no and dealer_id already exsits"
+INVENTORY_ADD_SUCCESS = "Dealer Inventory record added"
+INVENTORY_DEALER_NOT_FOUND = "Inventory Dealer ID not found"
+INVENTORY_CAR_SERIAL_NO_NOT_FOUND = "Inventory Car serial no not found"
+INVENTORY_DEALER_CAR_NOT_FOUND = "Record for given dealer and car not found"
+INVENTORY_UPDATE_SUCCESS = "Inventory record updated"
+INVENTORY_DELETE_SUCCESS = "Inventory record deleted"
+
+DEALER_EXISTS = "Dealer with given name and web_url already exists"
+DEALER_ADD_SUCCESS = "Dealer Entry Created"
+DEALER_NOT_FOUND = "Dealer not found"
+DEALER_UPDATE_SUCCESS = "Dealer record updated"
+DEALER_DELETE_SUCCESS = "Dealer record deleted"
+
+STATE_TAX_EXISTS = "State Tax record already exists"
+STATE_TAX_ADD_SUCCESS = "State Tax record created"
+STATE_TAX_ID_NOT_FOUND = "State tax id doesnt exist"
+STATE_NOT_FOUND = "State not found"
+STATE_TAX_UPDATE_SUCCESS = "State Tax record updated"
+STATE_TAX_DELETE_SUCCESS = "State Tax record deleted"
+
+EMPLOYEE_ADD_SUCCESS = "Employee Entry Created"
+EMPLOYEE_NOT_FOUND = "Employee ID not found"
+EMPLOYEE_UPDATE_SUCCESS = "Employee Record Updated"
+EMPLOYEE_DELETE_SUCCESS = "Employee Record deleted"
+
+MISSING_STATE_TAX = "Missing state tax detail"
+
+SALE_ADDED_SUCCCESS = "Sale Entry Created"
+SALE_INVOICE_IF_NOT_FOUND = "Invoice ID not found"
+SALE_UPDATE_SUCCESS = "Sale Invoice record updated"
+SALE_DELETE_SUCCESS = "Sale Invoice record deleted"
+
+SALE_ITEM_ADDED_SUCCESS = "Sale Line items Created"
+SALE_ITEM_INVOICE_NOT_FOUND = "Sale Item Invoice ID not found"
+SALE_ITEM_UPDATE_SUCCESS = "Sale Line item updated"
+SALE_ITEM_DELETE_SUCCESS = "Sale Line Item deleted"
+
+
+SUCCESS_MSG = "success"
+FAILURE_MSG = "failure"
